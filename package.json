@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/zam264/Playground#readme",
   "dependencies": {
+    "bluebird": "^3.5.5",
     "express": "^4.17.1",
     "request": "^2.88.0",
     "sqlite3": "^4.1.0"
