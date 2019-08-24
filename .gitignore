@@ -1,1 +1,4 @@
 node_modules/
+getTemp.log
+*.save
+db/temperature.db
