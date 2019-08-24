@@ -15,43 +15,40 @@ app.listen(80, () => {
 
 let getCustomersByCountry = (country, callback) => {
 
-    let sql = `SELECT FirstName,
-        LastName,
-        Email
-        FROM customers
-        WHERE Country = ?
-        ORDER BY FirstName`;
+    let sql = `SELECT *
+        FROM Temperature
+        ORDER BY TempDateTime DESC
+		LIMIT 1440`;
 
     // open the database
-    let db = new sqlite3.Database('./db/chinook.db', sqlite3.OPEN_READONLY, (err) => {
+    let db = new sqlite3.Database('./db/temperature.db', sqlite3.OPEN_READONLY, (err) => {
         if (err) {
             console.error(err.message);
         }
         console.log('Connected to the chinook database.');
     });
 
-    db.serialize(() => {
-        db.all(sql, country, (err, allRows) => {
+	db.serialize(() => {
+        db.all(sql, (err, allRows) => {
             callback(allRows);
             db.close();
         });
     });
 }
 
-app.get("/url/:country", async (req, res, next) => {
+app.get("/temp", async (req, res, next) => {
     getCustomersByCountry(req.params.country, (allRows) => {
         console.log("in callback");
 
         var o = {} // empty Object
-        var key = 'Customer Information';
+        var key = 'Temperature Information';
         o[key] = []; // empty Array, which you can push() values into
 
         allRows.forEach(element => {
 
             var data = {
-                firstName: element.FirstName,
-                lastName: element.LastName,
-                email: element.Email
+                tempDateTime: element.TempDateTime,
+                tempF: element.TempF
             }
             console.log(data)
             o[key].push(data)
