@@ -2,19 +2,42 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Get Raspberry Pi Temperature</title>
     <script src="main.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <h1>Get customers by country</h1>
-    <input id="queryText" type="text" value="USA">
-    <input id="query" type="button" value="query">
-    <div id="customerInfo"></div>
+    <div class="current element" style="background-color: grey">
+        <h1 id="currentTemp"></h1>
+        <h3 id="lastUpdateTime"></h3>
+    </div><!--
+  --><div class="statistic element" style="background-color: lightblue">
+        <div class="data">
+            <h4>Temperature Statistics</h4>
+            <div class="border sub-element">
+                <h4 id="avg">Avg temperature:</h4>
+            </div>
+            <div class="border sub-element">
+                <h4>Max temperature</h4>
+                <div id="max"></div>
+            </div>
+            <div class="border sub-element">
+                <h4>Min temperature</h4>
+                <div id="min"></div>
+            </div>
+        </div>
+    </div><!--
+ --><div class="historic element" style="background-color: lightblue">
+        <div class="data">
+            <h4>Historic Temperatures</h4>
+            <div id="historicTemps"></div>
+        </div>
+    </div>
 </body>
 
 </html>

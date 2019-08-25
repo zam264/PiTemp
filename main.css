@@ -1,0 +1,39 @@
+html{
+    padding: 10px;
+}
+
+.data{
+    height:400px;
+    overflow:auto;
+}
+
+.element{
+    border:1px solid black;
+    padding: 4px;
+}
+
+.sub-element{
+    border:1px solid black;
+    padding: 4px;
+    margin: 4px;
+}
+
+.current{
+    display:inline-block;
+    width: 100%;
+}
+
+.historic{
+    display:inline-block;
+    width: 50%;
+}
+ 
+.statistic{
+    display:inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+
+.cellheader{
+    padding-top: 15px;
+}
