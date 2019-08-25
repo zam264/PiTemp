@@ -25,7 +25,6 @@ let getCustomersByCountry = (country, callback) => {
         if (err) {
             console.error(err.message);
         }
-        console.log('Connected to the chinook database.');
     });
 
 	db.serialize(() => {
@@ -38,8 +37,6 @@ let getCustomersByCountry = (country, callback) => {
 
 app.get("/temp", async (req, res, next) => {
     getCustomersByCountry(req.params.country, (allRows) => {
-        console.log("in callback");
-
         var o = {} // empty Object
         var key = 'Temperature Information';
         o[key] = []; // empty Array, which you can push() values into
@@ -50,11 +47,9 @@ app.get("/temp", async (req, res, next) => {
                 tempDateTime: element.TempDateTime,
                 tempF: element.TempF
             }
-            console.log(data)
             o[key].push(data)
         });
         jsonStr = JSON.stringify(o[key])
-        console.log(jsonStr)
         res.send(o)
     })
 });
